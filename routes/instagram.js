@@ -32,7 +32,7 @@ exports.handleauth = function(req, res) {
 	  req.flash('message', 'Instagram login authenticated!');
     }
 	//res.send(JSON.stringify(json));
-	console.log(JSON.stringify(json));
+	//console.log(JSON.stringify(json));
 	
 	return res.redirect('/');
   });
@@ -54,11 +54,11 @@ router.get('/handleauth', exports.handleauth);
 router.get('/logout_ig', exports.unauthorize_user);
 
 router.use(function(req, res, next) {
-	console.log(req.session.instagram);
+	//console.log(req.session.instagram);
 	if (req.session.instagram && req.session.instagram.user) {
-		res.locals.ig_user = req.session.instagram.user.username;
+		res.locals.ig_user = req.session.instagram.user;
+		res.locals.ig_token = req.session.instagram.access_token;
 	}
-	
 	next();
 });
 
