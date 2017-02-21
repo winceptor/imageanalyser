@@ -6,33 +6,29 @@ var router = require('express').Router();
 var secret = require('../config/secret');
  
 ig.use({
-  client_id: secret.instagram_client_id,
-  client_secret: secret.instagram_client_secret
+  client_id: secret.instagram_client_id || '',
+  client_secret: secret.instagram_client_secret || ''
 });
 
-router.use(function(req, res, next) {
-	res.instagram_redirect_uri = res.locals.hosturl + "/handleauth";
-});
- 
-var redirect_uri = 'http://yoursite.com/handleauth'; //res.instagram_redirect_uri
+//var redirect_uri = 'http://yoursite.com/handleauth'; //res.instagram_redirect_uri
  
 exports.authorize_user = function(req, res) {
-  res.redirect(ig.get_authorization_url(res.instagram_redirect_uri, { scope: ['likes'], state: 'a state' }));
+  res.redirect(ig.get_authorization_url(res.locals.hosturl + "/handleauth", { scope: ['likes'], state: 'a state' }));
 };
  
 exports.handleauth = function(req, res) {
-  ig.authorize_user(req.query.code, res.instagram_redirect_uri, function(err, result) {
-	var result = {};
+  ig.authorize_user(req.query.code, res.locals.hosturl + "/handleauth", function(err, result) {
+	var json = {};
     if (err) {
       console.log(err.body);
-	  result.status = "error";
-	  result.message = err.body;
+	  json.status = "error";
+	  json.message = err.body;
     } else {
       console.log('Yay! Access token is ' + result.access_token);
-	  result.status = "success";
-	  result.message = 'You made it!!';
+	  json.status = "success";
+	  json.message = 'You made it!!';
     }
-	res.send(JSON.stringify(result));
+	res.send(JSON.stringify(json));
   });
 };
  
