@@ -103,7 +103,7 @@ mongoose.connection.on("error", function(err) {
 });
 
 //mongoose.connect(configDB.url); // connect to our database
-var db_ok = true;
+var db_ok = false;
 try {
 	mongoose.connect(secret.db_database,function(err){
 		if(err){

@@ -1,0 +1,20 @@
+<div class="container">
+
+    <div class="jumbotron text-center">
+		<h1><span class="fa fa-search"></span> Viewing Instagram</h1>
+		
+		<% if ( (typeof ig_user != "undefined") && ig_user && ig_user.username) { %>
+			<% if (data.length>0) { %>
+				<div class="images">
+					<% for (var i=0;i<data.length;i++) { var image = data[i]; if (typeof image != "undefined") { %>
+						<img class="img-responsive" src="<%= image %>" alt="Chania">
+					<% } %>
+				</div>
+			<% } %>
+					
+		<% } else { %>
+			<div class="alert alert-danger">Not authenticated!</div>
+		<% } %>
+	</div>
+
+</div>

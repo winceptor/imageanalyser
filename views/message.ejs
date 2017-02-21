@@ -1,11 +1,8 @@
-<div class="container">
-    <div class="jumbotron text-center">
-		<!-- show any messages that come back with authentication -->
-		<% if ( (typeof message != "undefined") && message && message.length > 0) { %>
-			<div class="alert"><%= message %></div>
-		<% } %>
-		<% if ( (typeof errors != "undefined") && errors && errors.length > 0) { %>
-			<div class="alert alert-danger"><%= errors %></div>
-		<% } %>
-	</div>
-</div>
+
+<!-- show any messages that come back with authentication -->
+<% if ( (typeof message != "undefined") && message && message.length > 0) { %>
+	<div class="jumbotron alert"><%= message %></div>
+<% } %>
+<% if ( (typeof errors != "undefined") && errors && errors.length > 0) { %>
+	<div class="jumbotron alert alert-danger"><%= errors %></div>
+<% } %>

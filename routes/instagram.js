@@ -62,6 +62,20 @@ router.use(function(req, res, next) {
 	next();
 });
 
+
+router.get('/view_ig',function(req, res, next) {
+	ig.use({ access_token: req.session.instagram.access_token });
+	
+	console.log(req.session.instagram);
+	
+	var options = {};
+	
+	ig.user_self_feed(options, function(err, medias, pagination, remaining, limit) {
+		res.render('view_ig.ejs', { data: medias, errors: req.flash('error') }); // load the index.ejs file
+	});
+
+});
+
 /*
 router.get('/search',function(req,res,next){
 
