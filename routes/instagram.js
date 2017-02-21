@@ -10,14 +10,14 @@ ig.use({
   client_secret: secret.instagram_client_secret || ''
 });
 
-//var redirect_uri = 'http://yoursite.com/handleauth'; //res.instagram_redirect_uri
+var redirect_uri = 'http://saasnodeiggoogle-jpef.c9users.io/handleauth'; //res.locals.hosturl + "/handleauth"
  
 exports.authorize_user = function(req, res) {
-  res.redirect(ig.get_authorization_url(res.locals.hosturl + "/handleauth", { scope: ['likes'], state: 'a state' }));
+  res.redirect(ig.get_authorization_url(redirect_uri, { scope: ['likes'], state: 'a state' }));
 };
  
 exports.handleauth = function(req, res) {
-  ig.authorize_user(req.query.code, res.locals.hosturl + "/handleauth", function(err, result) {
+  ig.authorize_user(req.query.code, redirect_uri, function(err, result) {
 	var json = {};
     if (err) {
       //console.log(err.body);

@@ -103,14 +103,13 @@ mongoose.connection.on("error", function(err) {
 });
 
 //mongoose.connect(configDB.url); // connect to our database
-var db_ok;
+var db_ok = true;
 try {
 	mongoose.connect(secret.db_database,function(err){
 		if(err){
 			console.log("Failed to connect to: " + secret.db_database);
 		}else {
 			console.log("Connected to the database!");
-			db_ok = true;
 		}
 	});
 } catch (err) {
@@ -142,6 +141,7 @@ if (db_ok) {
 		secret:secret.db_secretkey,
 		store:new mongoStore({ url:secret.db_database, autoReconnect:true})
 	}));
+	console.log("Sessions active.");
 }
 
 app.use(passport.initialize());
