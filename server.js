@@ -161,13 +161,16 @@ app.use(routes);
 
 // launch ======================================================================
 var httpServer = http.createServer(app);
-var httpsServer = https.createServer(credentials, app);
+
 
 httpServer.listen(server_port, server_ip, function(err){
 	if(err) throw err;
 	console.log("HTTP server is running on: " + server_ip + ":" + server_port);
 });
+/*
+var httpsServer = https.createServer(credentials, app);
 httpsServer.listen(server_sslport, server_ip, function(err){
 	if(err) throw err;
 	console.log("HTTPS server is running on: " + server_ip + ":" + server_sslport);
 });
+*/

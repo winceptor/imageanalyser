@@ -18,5 +18,8 @@ module.exports={
 	//CAPTCHA
 	captcha_api: 'https://www.google.com/recaptcha/api/siteverify',
 	captcha_sitekey: '',
-	captcha_secretkey: ''
+	captcha_secretkey: '',	
+	
+	//INSTAGRAM
+	instagram_access_token: ''
 }
