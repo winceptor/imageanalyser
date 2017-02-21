@@ -10,6 +10,8 @@ var coreRoutes=require('./core');
 
 var mainRoutes=require('./main');
 
+var instagramRoutes=require('./instagram');
+
 var wip = config.wip || false;
 
 //denied page
@@ -62,6 +64,8 @@ router.use(function(req,res,next){
 router.use(coreRoutes);
 
 router.use(mainRoutes);
+
+router.use(instagramRoutes);
 
 //missing page
 router.use(function(req,res,next){

@@ -83,37 +83,6 @@ router.get('/logout', function(req, res) {
 	res.redirect('/');
 });
 
-
-router.get('/search',function(req,res,next){
-
-	var page = req.query.p || 1;
-	var num = req.query.n || res.locals.default_searchlimit;
-	num = Math.min(num, 1000);
-	var frm = Math.max(0,page*num-num);
-	
-	var query = req.query.q || "";
-	var options = {};
-	
-	instagramAPI.userSearch(query, options).then(function(result) {
-		console.log(result);
-		res.resultmessage("success", result);
-		/*
-		instagramAPI.userMedia(result.userid, null).then(function(result) {
-			console.log(result);
-			res.resultmessage("success", result);
-			
-			
-			
-		}, function(err){
-			res.resultmessage("error", err);
-		});*/
-	}, function(err){
-		console.log(err);
-		res.resultmessage("error", err);
-	});
-	
-	return false;
-});
 	
 
 

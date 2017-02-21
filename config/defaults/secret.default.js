@@ -21,5 +21,8 @@ module.exports={
 	captcha_secretkey: '',	
 	
 	//INSTAGRAM
+	instagram_client_id: '',
+	instagram_client_secret: '',
+	
 	instagram_access_token: ''
 }
