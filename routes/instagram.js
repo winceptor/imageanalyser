@@ -9,15 +9,19 @@ ig.use({
   client_id: secret.instagram_client_id,
   client_secret: secret.instagram_client_secret
 });
+
+router.use(function(req, res, next) {
+	res.instagram_redirect_uri = res.locals.hosturl + "/handleauth";
+});
  
-var redirect_uri = 'http://yoursite.com/handleauth'; //res.locals.canonicalurl
+var redirect_uri = 'http://yoursite.com/handleauth'; //res.instagram_redirect_uri
  
 exports.authorize_user = function(req, res) {
-  res.redirect(ig.get_authorization_url(res.locals.canonicalurl, { scope: ['likes'], state: 'a state' }));
+  res.redirect(ig.get_authorization_url(res.instagram_redirect_uri, { scope: ['likes'], state: 'a state' }));
 };
  
 exports.handleauth = function(req, res) {
-  ig.authorize_user(req.query.code, res.locals.canonicalurl, function(err, result) {
+  ig.authorize_user(req.query.code, res.instagram_redirect_uri, function(err, result) {
 	var result = {};
     if (err) {
       console.log(err.body);
