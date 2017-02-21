@@ -24,5 +24,8 @@ module.exports={
 	instagram_client_id: '',
 	instagram_client_secret: '',
 	
-	instagram_access_token: ''
+	instagram_access_token: '',
+	
+	//GOOGLEMAPS
+	google_maps_key: ''
 }

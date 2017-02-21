@@ -1,8 +1,16 @@
 
 <!-- show any messages that come back with authentication -->
 <% if ( (typeof message != "undefined") && message && message.length > 0) { %>
-	<div class="jumbotron alert"><%= message %></div>
+	<div class="container">
+		<div class="jumbotron text-center">
+			<div class="alert"><%= message %></div>
+		</div>
+	</div>
 <% } %>
 <% if ( (typeof errors != "undefined") && errors && errors.length > 0) { %>
-	<div class="jumbotron alert alert-danger"><%= errors %></div>
+	<div class="container">
+		<div class="jumbotron text-center">
+			<div class="alert alert-danger"><%= errors %></div>
+		</div>
+	</div>
 <% } %>
