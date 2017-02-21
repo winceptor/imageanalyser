@@ -63,9 +63,9 @@ router.use(function(req,res,next){
 
 router.use(coreRoutes);
 
-router.use(mainRoutes);
-
 router.use(instagramRoutes);
+
+router.use(mainRoutes);
 
 //missing page
 router.use(function(req,res,next){

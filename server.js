@@ -77,6 +77,7 @@ var catparser = require('./routes/catparser');
 
 var routes = require('./routes/routes');
 
+/*
 var InstagramAPI = require('instagram-api');
 var instagramAPI = new InstagramAPI(instagram_access_token);
 
@@ -89,7 +90,7 @@ instagramAPI.userSelf().then(function(result) {
 }, function(err){
     console.log(err); // error info 
 });
-
+*/
 
 // configuration ===============================================================
 //Error handling, src: http://stackoverflow.com/a/14049430

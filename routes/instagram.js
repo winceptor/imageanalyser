@@ -20,15 +20,20 @@ exports.handleauth = function(req, res) {
   ig.authorize_user(req.query.code, res.locals.hosturl + "/handleauth", function(err, result) {
 	var json = {};
     if (err) {
-      console.log(err.body);
+      //console.log(err.body);
 	  json.status = "error";
-	  json.message = err.body;
+	  json.message = err;
+	  req.flash('error', 'Instagram login failed!');
     } else {
-      console.log('Yay! Access token is ' + result.access_token);
+      //console.log('Yay! Access token is ' + result.access_token);
 	  json.status = "success";
-	  json.message = 'You made it!!';
+	  json.message = result;
+	  req.flash('message', 'Instagram login authenticated!');
     }
-	res.send(JSON.stringify(json));
+	//res.send(JSON.stringify(json));
+	console.log(JSON.stringify(json));
+	
+	return res.redirect('/');
   });
 };
  
@@ -36,6 +41,12 @@ exports.handleauth = function(req, res) {
 router.get('/authorize_user', exports.authorize_user);
 // This is your redirect URI 
 router.get('/handleauth', exports.handleauth);
+
+router.use(function(req, res, next) {
+	
+	
+	next();
+});
 
 /*
 router.get('/search',function(req,res,next){
