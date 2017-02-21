@@ -28,6 +28,7 @@ exports.handleauth = function(req, res) {
       //console.log('Yay! Access token is ' + result.access_token);
 	  json.status = "success";
 	  json.message = result;
+	  req.session.instagram = result;
 	  req.flash('message', 'Instagram login authenticated!');
     }
 	//res.send(JSON.stringify(json));
@@ -36,14 +37,27 @@ exports.handleauth = function(req, res) {
 	return res.redirect('/');
   });
 };
+
+ 
+exports.unauthorize_user = function(req, res) {
+	req.session.instagram = null;
+	req.flash('message', 'Instagram logged out!');
+  return res.redirect('/');
+};
  
 // This is where you would initially send users to authorize 
-router.get('/authorize_user', exports.authorize_user);
+router.get('/login_ig', exports.authorize_user);
 // This is your redirect URI 
 router.get('/handleauth', exports.handleauth);
 
+// This is where you logout users
+router.get('/logout_ig', exports.unauthorize_user);
+
 router.use(function(req, res, next) {
-	
+	console.log(req.session.instagram);
+	if (req.session.instagram && req.session.instagram.user) {
+		res.locals.ig_user = req.session.instagram.user.username;
+	}
 	
 	next();
 });

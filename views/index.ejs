@@ -19,7 +19,12 @@
     <div class="jumbotron text-center">
         <h1><span class="fa fa-search"></span> Instagram API</h1>
 		
-		<a href="/authorize_user" class="btn btn-default"><span class="fa fa-user"></span> Authorize</a>
+		<% if ( (typeof ig_user != "undefined") && ig_user && ig_user.username) { %>
+			<span class="fa"><%= ig_user.username %></span>
+			<a href="/logout_ig" class="btn btn-default"><span class="fa fa-user"></span> Logout</a>
+		<% } %>
+			<a href="/login_ig" class="btn btn-default"><span class="fa fa-user"></span> Authorize</a>
+		<% } %>
     </div>
 
 </div>
