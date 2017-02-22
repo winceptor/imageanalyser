@@ -11,7 +11,7 @@
 				<div class="images text-center row">
 					<% for (var i=0;i<data.length;i++) { var entry = data[i]; if (typeof entry != "undefined") { %>
 						
-							<div class="col-xs-6 vertical-spacing mappable">
+							<div class="col-sm-6 vertical-spacing mappable">
 								<a href="/view_ig_single?id=<%= entry.id %>" >
 									<img class="img-rounded img-responsive" src="<%= entry.images.standard_resolution.url %>" alt="<%= entry.caption.text %>" style="width:100%;">
 								</a>

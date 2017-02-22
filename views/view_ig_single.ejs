@@ -10,12 +10,12 @@
 			<div class="images text-center">
 				<% var entry = data; if (typeof entry != "undefined") { %>
 					<div class="row">
-						<div class="col-xs-6 vertical-spacing">
+						<div class="col-sm-6 vertical-spacing">
 							<a href="/view_ig_single?id=<%= entry.id %>" >
 								<img class="img-rounded img-responsive" src="<%= entry.images.standard_resolution.url %>" alt="<%= entry.caption.text %>" style="width:100%;">
 							</a>
 						</div>
-						<div class="col-xs-6 vertical-spacing">
+						<div class="col-sm-6 vertical-spacing">
 							<div  id="map"></div>
 						</div>
 						<script>
